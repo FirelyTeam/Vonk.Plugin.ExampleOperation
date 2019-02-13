@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Vonk.Core" Version="1.1.0" />
+    <PackageReference Include="Vonk.Fhir.R3" Version="1.1.0" />
+  </ItemGroup>
+
+</Project>
