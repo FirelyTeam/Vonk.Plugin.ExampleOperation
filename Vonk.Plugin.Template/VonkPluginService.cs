@@ -8,7 +8,7 @@ using Vonk.Core.Support;
 
 namespace Vonk.Plugin.Template
 {
-    public class VonkPluginService
+    internal class VonkPluginService
 
     {
         private readonly ILogger<VonkPluginService> _logger;
