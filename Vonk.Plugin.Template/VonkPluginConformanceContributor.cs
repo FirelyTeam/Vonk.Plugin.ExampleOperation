@@ -17,7 +17,8 @@ namespace Vonk.Plugin.Template
             _supportedInteractionOptions = optionAccessor.Value;
         }
 
-        // Make the $test operation appear in the CapabilityStatement, if it is declared as supported in the SupportedOperationsOptions (see appsettings.instance.json)
+        // Make the $test operation appear in the CapabilityStatement, if it is declared as supported in the SupportedOperationsOptions 
+        // See http://docs.simplifier.net/vonk/configuration/appsettings.html - Enable or disable interactions
         public void Conformance(IConformanceBuilder builder)
         {
             Check.NotNull(builder, nameof(builder));
