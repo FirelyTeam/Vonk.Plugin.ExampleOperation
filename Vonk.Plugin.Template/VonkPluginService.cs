@@ -8,12 +8,12 @@ using Vonk.Core.Support;
 
 namespace Vonk.Plugin.Template
 {
-    public class VonkTestService
+    public class VonkPluginService
 
     {
-        private readonly ILogger<VonkTestService> _logger;
+        private readonly ILogger<VonkPluginService> _logger;
 
-        public VonkTestService(ILogger<VonkTestService> logger)
+        public VonkPluginService(ILogger<VonkPluginService> logger)
         {
             Check.NotNull(logger, nameof(logger));
             _logger = logger;
