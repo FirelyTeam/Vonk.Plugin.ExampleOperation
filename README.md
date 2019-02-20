@@ -2,8 +2,8 @@
 A template for creating plugins for the Vonk FHIR server [(vonk.fire.ly)](vonk.fire.ly).
 
 ## Getting Started
-This project was designed to help you get started with developing a plug-in for Vonk.
-It's a skeleton which you can adopt to create more complex custom operations.
+This project was designed to help you get started with developing a plug-in for Vonk.<br>
+It's a skeleton which you can adopt to create more complex custom operations.<br>
 For more details about developing a Vonk plug-in, please see [Vonk documentation - Vonk FHIR Components](http://docs.simplifier.net/vonk/components/components.html).
 
 ### Install
