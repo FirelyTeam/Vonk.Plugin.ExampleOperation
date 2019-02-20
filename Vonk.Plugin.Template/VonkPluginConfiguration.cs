@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Vonk.Core.Context;
 using Vonk.Core.Pluggability;
 using Vonk.Core.Support;
 
@@ -25,9 +26,8 @@ namespace Vonk.Plugin.Template
         public static IApplicationBuilder Configure(IApplicationBuilder builder)
         {
             // Register interactions (Don't add a "$" sign to the name of the custom operation, it will be added by default)
-            builder.OnCustomInteraction(Core.Context.VonkInteraction.instance_custom, "test").AndMethod("GET").HandleAsyncWith<VonkPluginService>((svc, context) => svc.Test(context));
-            builder.OnCustomInteraction(Core.Context.VonkInteraction.type_custom, "test").AndMethod("POST").HandleAsyncWith<VonkPluginService>((svc, context) => svc.Test(context));
-
+            builder.OnCustomInteraction(VonkInteraction.instance_custom, "test").AndMethod("GET").HandleAsyncWith<VonkPluginService>((svc, context) => svc.Test(context));
+            builder.OnCustomInteraction(VonkInteraction.type_custom, "test").AndMethod("POST").HandleAsyncWith<VonkPluginService>((svc, context) => svc.Test(context));
             return builder;
         }
     }

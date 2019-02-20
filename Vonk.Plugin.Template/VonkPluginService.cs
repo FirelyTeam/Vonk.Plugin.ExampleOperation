@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
-using System.Threading.Tasks;
 using Vonk.Core.Context;
 using Vonk.Core.Context.Features;
 using Vonk.Core.Support;
@@ -11,7 +10,6 @@ using Task = System.Threading.Tasks.Task;
 namespace Vonk.Plugin.Template
 {
     internal class VonkPluginService
-
     {
         private readonly ILogger<VonkPluginService> _logger;
 
@@ -23,7 +21,7 @@ namespace Vonk.Plugin.Template
         }
 
         /// <summary>
-        /// Handle GET [base]/<Resource>/id/$test
+        /// Handle GET [base]/<Resource>/id/$test and POST [base]/<Resource>/$test
         /// </summary>
         /// <param name="vonkContext">IVonkContext for details of the request and providing the response</param>
         /// <returns></returns>
