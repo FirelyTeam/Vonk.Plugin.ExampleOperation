@@ -6,7 +6,7 @@ using Vonk.Core.Support;
 
 namespace Vonk.Plugin.Template
 {
-    class VonkTestConformanceContributor : IConformanceContributor
+    internal class VonkPluginConformanceContributor : IConformanceContributor
     {
         private const string _operationName = "test";
         private readonly SupportedInteractionOptions _supportedInteractionOptions;
