@@ -10,7 +10,10 @@ namespace Vonk.Plugin.Template
     [VonkConfiguration(order: 4600)] // Check for potential conflicts!
     public class VonkPluginConfiguration
     {
-        // Add services here to the DI system of ASP.NET Core
+        /* Add services here to the DI system of ASP.NET Core
+           Make sure to register services that you depend upon as well. 
+           All service registration methods in Vonk are idempotent, so they can be safely called multiple times.
+        */
         public static IServiceCollection ConfigureServices(IServiceCollection services)
         {
             services.TryAddScoped<VonkPluginService>(); // Add the service implementation
