@@ -13,6 +13,7 @@ namespace Vonk.Plugin.Template
     {
         private readonly ILogger<VonkPluginService> _logger;
 
+        // You can have any dependency (e.g. ISearchRepository, IResourceChangeRepository) injected here, if they have been registered before
         public VonkPluginService(ILogger<VonkPluginService> logger)
         {
             Check.NotNull(logger, nameof(logger));
