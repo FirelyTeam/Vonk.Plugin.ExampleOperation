@@ -31,7 +31,7 @@ namespace Vonk.Plugin.Template
             vonkContext.Arguments.Handled();
             response.HttpResult = 200;
 
-            // Insert complex operation
+            _ = await Task.FromResult(true); // Replace with own complex operation
 
             var operationOutcome = new OperationOutcome();
             operationOutcome.Issue.Add(new OperationOutcome.IssueComponent
