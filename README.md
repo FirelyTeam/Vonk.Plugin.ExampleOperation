@@ -26,7 +26,7 @@ The $document operation is defined in FHIR for multiple interactions:
 * Instance level interaction:<br>
     > GET [base]/[Resource]/[id]/$test
     
- You should get a response back from the FHIR server containing an OperationOutcome.
+ You should get a response back from the FHIR server containing an OperationOutcome.<br>
  It should report that $test was executed sucessfully.
     
 ## License
