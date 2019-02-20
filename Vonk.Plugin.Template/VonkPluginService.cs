@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 using Vonk.Core.Context;
 using Vonk.Core.Context.Features;
 using Vonk.Core.Support;
+using Hl7.Fhir.Model;
+using Vonk.Fhir.R3;
+using Task = System.Threading.Tasks.Task;
 
 namespace Vonk.Plugin.Template
 {
@@ -31,6 +34,15 @@ namespace Vonk.Plugin.Template
             response.HttpResult = 200;
 
             // Insert complex operation
+
+            var operationOutcome = new OperationOutcome();
+            operationOutcome.Issue.Add(new OperationOutcome.IssueComponent
+            {
+                Severity = OperationOutcome.IssueSeverity.Information,
+                Code = OperationOutcome.IssueType.Informational,
+                Diagnostics = "$test operation was executed successfully"
+            });
+            response.Payload = operationOutcome.ToIResource();
 
             _logger.LogDebug("Executed $test"); // Adjust log level in logsettings.instance.json to see the message
         }
