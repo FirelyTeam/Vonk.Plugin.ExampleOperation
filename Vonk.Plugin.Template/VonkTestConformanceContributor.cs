@@ -11,12 +11,13 @@ namespace Vonk.Plugin.Template
         private const string _operationName = "test";
         private readonly SupportedInteractionOptions _supportedInteractionOptions;
 
-        public VonkTestConformanceContributor(IOptions<SupportedInteractionOptions> optionAccessor)
+        public VonkPluginConformanceContributor(IOptions<SupportedInteractionOptions> optionAccessor)
         {
             Check.NotNull(optionAccessor, nameof(optionAccessor));
             _supportedInteractionOptions = optionAccessor.Value;
         }
 
+        // Make the $test operation appear in the CapabilityStatement, if it is declared as supported in the SupportedOperationsOptions (see appsettings.instance.json)
         public void Conformance(IConformanceBuilder builder)
         {
             Check.NotNull(builder, nameof(builder));
