@@ -32,8 +32,9 @@ namespace Vonk.Plugin.Template
             vonkContext.Arguments.Handled();
             response.HttpResult = 200;
 
-            _logger.LogInformation("Executed $test");
             // Insert complex operation
+
+            _logger.LogDebug("Executed $test"); // Adjust log level in logsettings.instance.json to see the message
         }
 
         [InteractionHandler(VonkInteraction.type_custom, CustomOperation = "test", Method = "POST")]
