@@ -3,7 +3,6 @@ using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using Vonk.Core.Context;
 using Vonk.Core.Context.Features;
-using Vonk.Core.Pluggability;
 using Vonk.Core.Support;
 
 namespace Vonk.Plugin.Template
@@ -25,8 +24,7 @@ namespace Vonk.Plugin.Template
         /// </summary>
         /// <param name="vonkContext">IVonkContext for details of the request and providing the response</param>
         /// <returns></returns>
-        [InteractionHandler(VonkInteraction.instance_custom, CustomOperation = "test", Method = "GET")]
-        public async Task TestInstanceGET(IVonkContext vonkContext)
+        public async Task Test(IVonkContext vonkContext)
         {
             var (_, _, response) = vonkContext.Parts();
             vonkContext.Arguments.Handled();
@@ -35,17 +33,6 @@ namespace Vonk.Plugin.Template
             // Insert complex operation
 
             _logger.LogDebug("Executed $test"); // Adjust log level in logsettings.instance.json to see the message
-        }
-
-        [InteractionHandler(VonkInteraction.type_custom, CustomOperation = "test", Method = "POST")]
-        public async Task TestTypePOST(IVonkContext vonkContext)
-        {
-            var (_, _, response) = vonkContext.Parts();
-            vonkContext.Arguments.Handled();
-            response.HttpResult = 200;
-
-            _logger.LogInformation("Executed $test");
-            // Insert complex operation
         }
 
     }
