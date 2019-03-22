@@ -7,7 +7,7 @@ using Hl7.Fhir.Model;
 using Vonk.Fhir.R3;
 using Task = System.Threading.Tasks.Task;
 
-namespace Vonk.Plugin.Template
+namespace Vonk.Plugin.Example
 {
     internal class VonkPluginService
     {

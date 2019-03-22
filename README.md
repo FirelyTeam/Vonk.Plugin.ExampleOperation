@@ -1,4 +1,4 @@
-# Vonk.Plugin.Template
+# Vonk.Plugin.Example
 A template for creating plugins for the Vonk FHIR server [(vonk.fire.ly)](vonk.fire.ly).
 
 ## Getting Started
