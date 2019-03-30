@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28531.58
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vonk.Plugin.Template", "Vonk.Plugin.Template\Vonk.Plugin.Template.csproj", "{3D199D9D-E55B-46D1-A0D5-106BF10C9FEC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vonk.Plugin.ExampleOperation", "Vonk.Plugin.ExampleOperation\Vonk.Plugin.ExampleOperation.csproj", "{3D199D9D-E55B-46D1-A0D5-106BF10C9FEC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

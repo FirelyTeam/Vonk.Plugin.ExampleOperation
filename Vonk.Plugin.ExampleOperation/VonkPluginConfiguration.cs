@@ -6,7 +6,7 @@ using Vonk.Core.Context;
 using Vonk.Core.Pluggability;
 using Vonk.Core.Support;
 
-namespace Vonk.Plugin.Template
+namespace Vonk.Plugin.ExampleOperation
 {
     [VonkConfiguration(order: 4600)] // Check for potential conflicts!
     public class VonkPluginConfiguration
