@@ -1,4 +1,4 @@
-# Vonk.Plugin.Template
+# Vonk.Plugin.ExampleOperation
 A template for creating plugins for the Vonk FHIR server [(vonk.fire.ly)](vonk.fire.ly).
 
 ## Getting Started
@@ -12,7 +12,7 @@ For instructon on how to run the plug-in and the Vonk server, please see the off
 ### Build dependencies
 The following configuration has been succesfully tested for building and running the project:
 * Vonk FHIR server - Version 1.1.0
-* Visual Studio for Mac - Version 7.7.*
+* Visual Studio for Mac - Version 8.*.*
 * Visual Studio for Windows - Version 15.*.*
 * .Net Core - Version 2.0
 

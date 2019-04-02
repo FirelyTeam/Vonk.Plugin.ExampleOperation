@@ -4,7 +4,7 @@ using Vonk.Core.Context;
 using Vonk.Core.Pluggability;
 using Vonk.Core.Support;
 
-namespace Vonk.Plugin.Template
+namespace Vonk.Plugin.ExampleOperation
 {
     internal class VonkPluginConformanceContributor : IConformanceContributor
     {
