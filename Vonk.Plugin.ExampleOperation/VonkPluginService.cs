@@ -42,7 +42,7 @@ namespace Vonk.Plugin.ExampleOperation
             });
             response.Payload = operationOutcome.ToIResource();
 
-            _logger.LogDebug("Executed $test"); // Adjust log level in logsettings.instance.json to see the message
+            _logger.LogDebug("VonkPluginService - Executed $test"); // Adjust log level in logsettings.instance.json to see the message
         }
 
     }

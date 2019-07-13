@@ -25,6 +25,8 @@ namespace Vonk.Plugin.ExampleOperation
         // Add middleware to the pipeline being built with the builder
         public static IApplicationBuilder Configure(IApplicationBuilder builder)
         {
+            // Register Middleware, can also be registered independantly of the VonkPluginService using a seperate configuration class
+            builder.UseMiddleware<VonkPluginMiddleware>();
             // Register interactions (Don't add a "$" sign to the name of the custom operation, it will be added by default)
             builder.OnCustomInteraction(VonkInteraction.instance_custom, "test").AndMethod("GET").HandleAsyncWith<VonkPluginService>((svc, context) => svc.Test(context));
             builder.OnCustomInteraction(VonkInteraction.type_custom, "test").AndMethod("POST").HandleAsyncWith<VonkPluginService>((svc, context) => svc.Test(context));
