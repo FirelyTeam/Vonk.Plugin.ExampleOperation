@@ -6,7 +6,10 @@ using Vonk.Core.Support;
 using Hl7.Fhir.Model;
 using Vonk.Fhir.R3;
 using Task = System.Threading.Tasks.Task;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("Vonk.Plugin.ExampleOperation.Tests")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 namespace Vonk.Plugin.ExampleOperation
 {
     internal class VonkPluginService
