@@ -38,6 +38,7 @@ namespace Vonk.Plugin.ExampleOperation.Tests
             // Execute $document
             await _testOperationService.Test(testContext);
 
+            // Check response
             testContext.Response.HttpResult.Should().Be(StatusCodes.Status200OK, "$test should succeed");
             testContext.Response.Payload.GetResourceTypeIndicator().Should().Be("OperationOutcome", "An OperationOutcome should be included in the response");
 
@@ -48,7 +49,7 @@ namespace Vonk.Plugin.ExampleOperation.Tests
         [Fact]
         public async Task TestOperationTypeLevelShouldSucceed()
         {
-            // Create VonkContext for $test (GET / Instance level)
+            // Create VonkContext for $test (POST / Type level)
             var testContext = new VonkTestContext(VonkInteraction.instance_custom);
             testContext.Arguments.AddArguments(new[]
             {
@@ -60,6 +61,7 @@ namespace Vonk.Plugin.ExampleOperation.Tests
             // Execute $document
             await _testOperationService.Test(testContext);
 
+            // Check response
             testContext.Response.HttpResult.Should().Be(StatusCodes.Status200OK, "$test should succeed");
             testContext.Response.Payload.GetResourceTypeIndicator().Should().Be("OperationOutcome", "An OperationOutcome should be included in the response");
 
