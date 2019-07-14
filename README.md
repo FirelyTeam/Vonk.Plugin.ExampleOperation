@@ -18,7 +18,7 @@ The following configuration has been succesfully tested for building and running
 
 ## Tests
 
-The $document operation is defined in FHIR for multiple interactions:
+The $test operation is defined for multiple interactions:
 
 * Type level interaction:<br>
     > POST [base]/[Resource]/$test
