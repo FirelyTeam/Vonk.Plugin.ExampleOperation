@@ -45,5 +45,16 @@ namespace Vonk.Plugin.ExampleOperation
             _logger.LogDebug("Executed $test"); // Adjust log level in logsettings.instance.json to see the message
         }
 
+        public async Task PrepareTest(IVonkContext vonkContext)
+        {
+            _logger.LogDebug("VonkPluginService - About to execute $test");
+            _ = await Task.FromResult(true);
+        }
+
+        public async Task PostHandlerTest(IVonkContext vonkContext)
+        {
+            _logger.LogDebug("VonkPluginService - PostHandler $test");
+            _ = await Task.FromResult(true);
+        }
     }
 }
