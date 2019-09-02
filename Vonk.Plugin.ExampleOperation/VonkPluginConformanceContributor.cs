@@ -1,12 +1,15 @@
-﻿using System;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
+using Vonk.Core.Common;
 using Vonk.Core.Context;
-using Vonk.Core.Pluggability;
+using Vonk.Core.Metadata;
+using Vonk.Core.Model.Capability;
+using Vonk.Core.Pluggability.ContextAware;
 using Vonk.Core.Support;
 
 namespace Vonk.Plugin.ExampleOperation
 {
-    internal class VonkPluginConformanceContributor : IConformanceContributor
+    [ContextAware(InformationModels = new[] { VonkConstants.Model.FhirR3 })]
+    internal class VonkPluginConformanceContributor : ICapabilityStatementContributor
     {
         private const string _operationName = "test";
         private readonly SupportedInteractionOptions _supportedInteractionOptions;
@@ -19,7 +22,7 @@ namespace Vonk.Plugin.ExampleOperation
 
         // Make the $test operation appear in the CapabilityStatement, if it is declared as supported in the SupportedOperationsOptions 
         // See http://docs.simplifier.net/vonk/configuration/appsettings.html - Enable or disable interactions
-        public void Conformance(IConformanceBuilder builder)
+        public void ContributeToCapabilityStatement(ICapabilityStatementBuilder builder)
         {
             Check.NotNull(builder, nameof(builder));
             if (_supportedInteractionOptions.SupportsCustomOperation(_operationName))
