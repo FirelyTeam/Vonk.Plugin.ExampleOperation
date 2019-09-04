@@ -54,7 +54,7 @@ namespace Vonk.Test.Utils
         public Dictionary<VonkResultHeader, string> Headers { get; set; } = new Dictionary<VonkResultHeader, string>();
 
         public int HttpResult { get; set; }
-        public OperationOutcome Outcome { get; set; } = new OperationOutcome();
+        public VonkOutcome Outcome { get; set; } = new VonkOutcome();
         public IResource Payload { get; set; }
     }
 }
