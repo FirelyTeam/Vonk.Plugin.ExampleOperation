@@ -8,6 +8,7 @@ using Vonk.Core.Support;
 
 namespace Vonk.Plugin.ExampleOperation
 {
+    // The ContextAware attribute lets implementations choose for which information models (e.g. FHIR STU3, R4) the service should be made available
     [ContextAware(InformationModels = new[] { VonkConstants.Model.FhirR3 })]
     internal class VonkPluginConformanceContributor : ICapabilityStatementContributor
     {
