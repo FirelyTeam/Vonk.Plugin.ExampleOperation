@@ -5,7 +5,7 @@ using Vonk.Core.Common;
 using Vonk.Core.Context;
 using Vonk.Core.Metadata;
 using Vonk.Core.Pluggability;
-using Vonk.Core.Support;
+using Vonk.Core.Pluggability.ContextAware;
 
 namespace Vonk.Plugin.ExampleOperation
 {
@@ -19,7 +19,7 @@ namespace Vonk.Plugin.ExampleOperation
         public static IServiceCollection ConfigureServices(IServiceCollection services)
         {
             services.TryAddScoped<VonkPluginService>(); // Add the service implementation
-            services.AddIfNotExists<ICapabilityStatementContributor, VonkPluginConformanceContributor>(ServiceLifetime.Transient); // Add operation to Vonk's CapabilityStatement
+            services.TryAddContextAware<ICapabilityStatementContributor, VonkPluginCapabilityStatementContributor>(ServiceLifetime.Transient); // Add operation to Vonk's CapabilityStatement (Only for STU-3)
             return services;
         }
 
