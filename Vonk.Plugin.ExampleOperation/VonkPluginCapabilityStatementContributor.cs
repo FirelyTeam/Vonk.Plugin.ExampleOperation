@@ -10,12 +10,12 @@ namespace Vonk.Plugin.ExampleOperation
 {
     // The ContextAware attribute lets implementations choose for which information models (e.g. FHIR STU3, R4) the service should be made available
     [ContextAware(InformationModels = new[] { VonkConstants.Model.FhirR3 })]
-    internal class VonkPluginConformanceContributor : ICapabilityStatementContributor
+    internal class VonkPluginCapabilityStatementContributor : ICapabilityStatementContributor
     {
         private const string _operationName = "test";
         private readonly SupportedInteractionOptions _supportedInteractionOptions;
 
-        public VonkPluginConformanceContributor(IOptions<SupportedInteractionOptions> optionAccessor)
+        public VonkPluginCapabilityStatementContributor(IOptions<SupportedInteractionOptions> optionAccessor)
         {
             Check.NotNull(optionAccessor, nameof(optionAccessor));
             _supportedInteractionOptions = optionAccessor.Value;
