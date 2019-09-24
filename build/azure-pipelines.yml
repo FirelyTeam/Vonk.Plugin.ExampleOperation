@@ -1,10 +1,11 @@
 # Repo: FirelyTeam/Vonk.Plugin.ExampleOperation
-# File: build/azure-pipeline.yaml
+# File: build/azure-pipelines.yml
 resources:
   repositories:
     - repository: templates
       type: github
       name: FirelyTeam/azure-pipeline-templates
+      endpoint: https://github.com/FirelyTeam/azure-pipeline-templates.git
 
 variables:
   buildConfiguration: 'Release'
