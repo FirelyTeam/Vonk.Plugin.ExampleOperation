@@ -5,7 +5,7 @@ resources:
     - repository: templates
       type: github
       name: FirelyTeam/azure-pipeline-templates
-      endpoint: https://github.com/FirelyTeam/azure-pipeline-templates.git
+      endpoint: GitHub_Access 
 
 variables:
   buildConfiguration: 'Release'
