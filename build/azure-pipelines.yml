@@ -1,5 +1,7 @@
 # Repo: FirelyTeam/Vonk.Plugin.ExampleOperation
 # File: build/azure-pipelines.yml
+name: $(SourceBranchName)-$(Date:yyyyMMdd)$(Rev:-r)
+
 resources:
   repositories:
     - repository: templates
