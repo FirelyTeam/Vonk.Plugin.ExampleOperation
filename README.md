@@ -1,3 +1,5 @@
+[![Build Status](https://firely.visualstudio.com/vonk%20public%20plugins/_apis/build/status/FirelyTeam.Vonk.Plugin.ExampleOperation?branchName=develop)](https://firely.visualstudio.com/vonk%20public%20plugins/_build/latest?definitionId=33&branchName=develop)
+
 # Vonk.Plugin.ExampleOperation
 A template for creating plugins for the Vonk FHIR server [(vonk.fire.ly)](vonk.fire.ly).
 
