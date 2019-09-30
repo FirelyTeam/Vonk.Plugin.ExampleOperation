@@ -15,5 +15,4 @@ variables:
 jobs:
 - template: build.yml@templates  # Template reference
   parameters:
-    poolName: 'Private pool'
-    vmImage: null
+    vmImage: 'windows-2019'
