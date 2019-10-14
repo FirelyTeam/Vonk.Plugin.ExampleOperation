@@ -1,9 +1,7 @@
-﻿using Hl7.Fhir.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Vonk.Core.Common;
 using Vonk.Core.Context;
-using Vonk.Core.Context.Features;
 
 namespace Vonk.Test.Utils
 {
