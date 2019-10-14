@@ -11,10 +11,15 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
     <PackageReference Include="Moq" Version="4.13.0" />
     <PackageReference Include="FluentAssertions" Version="5.9.0" />
+    <PackageReference Include="Vonk.UnitTests.Framework" Version="3.0.0-alpha-develop.5276" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Vonk.Plugin.ExampleOperation\Vonk.Plugin.ExampleOperation.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="LoggerUtils.cs" />
+    <Compile Remove="VonkTestContext.cs" />
+  </ItemGroup>
 </Project>
