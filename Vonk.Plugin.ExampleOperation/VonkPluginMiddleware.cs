@@ -2,7 +2,8 @@
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Vonk.Core.Context.Features;
+using Vonk.Core.Context;
+using Vonk.Core.Context.Http;
 using Vonk.Core.Support;
 
 namespace Vonk.Plugin.ExampleOperation

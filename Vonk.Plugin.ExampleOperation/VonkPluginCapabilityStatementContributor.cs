@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using Vonk.Core.Common;
-using Vonk.Core.Context;
+using Vonk.Core.Context.Guards;
 using Vonk.Core.Metadata;
 using Vonk.Core.Model.Capability;
 using Vonk.Core.Pluggability.ContextAware;
@@ -9,7 +9,7 @@ using Vonk.Core.Support;
 namespace Vonk.Plugin.ExampleOperation
 {
     // The ContextAware attribute lets implementations choose for which information models (e.g. FHIR STU3, R4) the service should be made available
-    [ContextAware(InformationModels = new[] { VonkConstants.Model.FhirR3 })]
+    [ContextAware(InformationModels = new[] { VonkConstants.Model.FhirR3, VonkConstants.Model.FhirR4 })]
     internal class VonkPluginCapabilityStatementContributor : ICapabilityStatementContributor
     {
         private const string _operationName = "test";
