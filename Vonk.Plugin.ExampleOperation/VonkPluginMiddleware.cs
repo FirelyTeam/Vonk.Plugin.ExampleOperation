@@ -8,7 +8,7 @@ using Vonk.Core.Support;
 
 namespace Vonk.Plugin.ExampleOperation
 {
-    class VonkPluginMiddleware
+    internal class VonkPluginMiddleware
     {
         private readonly RequestDelegate _next;
         private readonly ILogger<VonkPluginService> _logger;

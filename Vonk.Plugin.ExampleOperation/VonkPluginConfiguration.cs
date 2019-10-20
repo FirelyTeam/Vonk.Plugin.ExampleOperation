@@ -54,4 +54,19 @@ namespace Vonk.Plugin.ExampleOperation
             return builder;
         }
     }
+
+    [VonkConfiguration(order: 1115)] // Needs to be configured before the VonkToHttpConfiguration
+    public class CustomContentTypeMiddlewareConfiguration
+    {
+        public static IServiceCollection ConfigureServices(IServiceCollection services)
+        {
+            return services;
+        }
+
+        public static IApplicationBuilder Configure(IApplicationBuilder builder)
+        {
+            builder.UseMiddleware<CustomContentTypeMiddleware>();
+            return builder;
+        }
+    }
 }
