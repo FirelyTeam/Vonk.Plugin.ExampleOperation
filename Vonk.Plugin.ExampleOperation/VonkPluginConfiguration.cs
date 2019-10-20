@@ -27,14 +27,14 @@ namespace Vonk.Plugin.ExampleOperation
         public static IApplicationBuilder Configure(IApplicationBuilder builder)
         {
             // Register Pre-Handler
-            builder.OnCustomInteraction(VonkInteraction.all_custom, "test").AndInformationModel(VonkConstants.Model.FhirR3).PreHandleAsyncWith<VonkPluginService>((svc, context) => svc.PrepareTest(context));
+            builder.OnCustomInteraction(VonkInteraction.all_custom, "test").PreHandleAsyncWith<VonkPluginService>((svc, context) => svc.PrepareTest(context));
 
             // Register Post-Handler, needs to be registered before the custom operation itself
-            builder.OnCustomInteraction(VonkInteraction.all_custom, "test").AndInformationModel(VonkConstants.Model.FhirR3).PostHandleAsyncWith<VonkPluginService>((svc, context) => svc.PostHandlerTest(context));
+            builder.OnCustomInteraction(VonkInteraction.all_custom, "test").PostHandleAsyncWith<VonkPluginService>((svc, context) => svc.PostHandlerTest(context));
 
             // Register interactions (Don't add a "$" sign to the name of the custom operation, it will be added by default)
-            builder.OnCustomInteraction(VonkInteraction.instance_custom, "test").AndInformationModel(VonkConstants.Model.FhirR3).AndMethod("GET").HandleAsyncWith<VonkPluginService>((svc, context) => svc.Test(context));
-            builder.OnCustomInteraction(VonkInteraction.type_custom, "test").AndInformationModel(VonkConstants.Model.FhirR3).AndMethod("POST").HandleAsyncWith<VonkPluginService>((svc, context) => svc.Test(context));
+            builder.OnCustomInteraction(VonkInteraction.instance_custom, "test").AndMethod("GET").HandleAsyncWith<VonkPluginService>((svc, context) => svc.Test(context));
+            builder.OnCustomInteraction(VonkInteraction.type_custom, "test").AndMethod("POST").HandleAsyncWith<VonkPluginService>((svc, context) => svc.Test(context));
             return builder;
         }
     }
