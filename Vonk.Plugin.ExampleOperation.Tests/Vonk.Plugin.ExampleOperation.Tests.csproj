@@ -18,8 +18,4 @@
     <ProjectReference Include="..\Vonk.Plugin.ExampleOperation\Vonk.Plugin.ExampleOperation.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Remove="LoggerUtils.cs" />
-    <Compile Remove="VonkTestContext.cs" />
-  </ItemGroup>
 </Project>
