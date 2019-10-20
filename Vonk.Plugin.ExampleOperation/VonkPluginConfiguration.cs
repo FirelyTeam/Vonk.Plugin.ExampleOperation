@@ -19,7 +19,7 @@ namespace Vonk.Plugin.ExampleOperation
         public static IServiceCollection ConfigureServices(IServiceCollection services)
         {
             services.TryAddScoped<VonkPluginService>(); // Add the service implementation
-            services.TryAddContextAware<ICapabilityStatementContributor, VonkPluginCapabilityStatementContributor>(ServiceLifetime.Transient); // Add operation to Vonk's CapabilityStatement (Only for STU-3)
+            services.TryAddContextAware<ICapabilityStatementContributor, VonkPluginCapabilityStatementContributor>(ServiceLifetime.Transient); // Add operation to Vonk's CapabilityStatement
             return services;
         }
 
