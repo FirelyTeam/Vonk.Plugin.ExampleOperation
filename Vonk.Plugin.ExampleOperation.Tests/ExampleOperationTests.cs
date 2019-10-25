@@ -2,15 +2,13 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Vonk.Core.Context;
-using Vonk.Test.Utils;
 using Xunit;
 using FluentAssertions;
-using static Vonk.Plugin.ExampleOperation.Tests.LoggerUtils;
+using static Vonk.UnitTests.Framework.Helpers.LoggerUtils;
 using Microsoft.AspNetCore.Http;
-using Hl7.Fhir.ElementModel;
-using Vonk.Core.ElementModel;
 using System.Linq;
 using static Vonk.Core.Context.VonkOutcome;
+using Vonk.UnitTests.Framework.Helpers;
 
 namespace Vonk.Plugin.ExampleOperation.Tests
 {
