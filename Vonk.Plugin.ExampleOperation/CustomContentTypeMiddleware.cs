@@ -21,7 +21,11 @@ namespace Vonk.Plugin.ExampleOperation
             _logger = logger;
         }
 
-        // VonkPluginMiddleware can directly access the HttpContext, as opposed to the VonkPluginService
+        /*
+         * A plugin implemented directly as a ASP.NET Core Middleware can access the HttpContext directly,
+         * whereas a service acting on the IVonkContext cannot.
+         */
+
         public async Task Invoke(HttpContext httpContext)
         {
             _logger.LogDebug("CustomContentTypeMiddleware - Begin Invoke");
