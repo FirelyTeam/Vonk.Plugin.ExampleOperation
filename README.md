@@ -15,7 +15,7 @@ For instructon on how to run the plug-in and the Vonk server, please see the off
 
 ### Build dependencies
 The following configuration has been succesfully tested for building and running the project:
-* Vonk FHIR server - Version 2.0.1
+* Vonk FHIR server - Version 3.0.0
 * Visual Studio for Mac - Version 8.x.x
 * Visual Studio for Windows - Version 16.x.x
 * .Net Core - Version 2.2
@@ -31,7 +31,11 @@ The $test operation is defined for multiple interactions:
     > GET [base]/[Resource]/[id]/$test
     
  You should get a response back from the FHIR server containing an OperationOutcome.<br>
- It should report that $test was executed sucessfully.
+ It should report that $test was executed sucessfully. [Executing $test using FHIR STU3 and R4 is supported](http://docs.simplifier.net/vonk/features/multiversion.html).
+
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/8eec15ad88bf9c7ba9a6)
+
+A Postman collection for all the requests mentioned above can also be found in the 'data' folder.
     
 ## License
 

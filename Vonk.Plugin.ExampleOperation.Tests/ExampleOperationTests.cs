@@ -2,14 +2,13 @@
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Vonk.Core.Context;
-using Vonk.Test.Utils;
 using Xunit;
 using FluentAssertions;
-using static Vonk.Plugin.ExampleOperation.Tests.LoggerUtils;
+using static Vonk.UnitTests.Framework.Helpers.LoggerUtils;
 using Microsoft.AspNetCore.Http;
-using Hl7.Fhir.ElementModel;
-using Vonk.Core.ElementModel;
 using System.Linq;
+using static Vonk.Core.Context.VonkOutcome;
+using Vonk.UnitTests.Framework.Helpers;
 
 namespace Vonk.Plugin.ExampleOperation.Tests
 {
@@ -40,10 +39,8 @@ namespace Vonk.Plugin.ExampleOperation.Tests
 
             // Check response
             testContext.Response.HttpResult.Should().Be(StatusCodes.Status200OK, "$test should succeed");
-            testContext.Response.Payload.GetResourceTypeIndicator().Should().Be("OperationOutcome", "An OperationOutcome should be included in the response");
-
-            testContext.Response.Payload.Children("issue").Count().Should().Be(1, "Only a single issue should be present in the OperationOutcome");
-            testContext.Response.Payload.SelectText("issue.severity").Should().Be("information", "The OperationOutcome should informational, not an error");
+            testContext.Response.Outcome.Issues.Count().Should().Be(1, "An OperationOutcome should be included in the response");
+            testContext.Response.Outcome.IssuesWithSeverity(IssueSeverity.Information).Count().Should().Be(1, "The OperationOutcome should be informational, not an error");
         }
 
         [Fact]
@@ -63,10 +60,8 @@ namespace Vonk.Plugin.ExampleOperation.Tests
 
             // Check response
             testContext.Response.HttpResult.Should().Be(StatusCodes.Status200OK, "$test should succeed");
-            testContext.Response.Payload.GetResourceTypeIndicator().Should().Be("OperationOutcome", "An OperationOutcome should be included in the response");
-
-            testContext.Response.Payload.Children("issue").Count().Should().Be(1, "Only a single issue should be present in the OperationOutcome");
-            testContext.Response.Payload.SelectText("issue.severity").Should().Be("information", "The OperationOutcome should informational, not an error");
+            testContext.Response.Outcome.Issues.Count().Should().Be(1, "An OperationOutcome should be included in the response");
+            testContext.Response.Outcome.IssuesWithSeverity(IssueSeverity.Information).Count().Should().Be(1, "The OperationOutcome should be informational, not an error");
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Vonk.Core.Common;
 using Vonk.Core.Context;
 using Vonk.Core.Metadata;
 using Vonk.Core.Pluggability;
@@ -19,7 +18,7 @@ namespace Vonk.Plugin.ExampleOperation
         public static IServiceCollection ConfigureServices(IServiceCollection services)
         {
             services.TryAddScoped<VonkPluginService>(); // Add the service implementation
-            services.TryAddContextAware<ICapabilityStatementContributor, VonkPluginCapabilityStatementContributor>(ServiceLifetime.Transient); // Add operation to Vonk's CapabilityStatement (Only for STU-3)
+            services.TryAddContextAware<ICapabilityStatementContributor, VonkPluginCapabilityStatementContributor>(ServiceLifetime.Transient); // Add operation to Vonk's CapabilityStatement
             return services;
         }
 
@@ -27,14 +26,14 @@ namespace Vonk.Plugin.ExampleOperation
         public static IApplicationBuilder Configure(IApplicationBuilder builder)
         {
             // Register Pre-Handler
-            builder.OnCustomInteraction(VonkInteraction.all_custom, "test").AndInformationModel(VonkConstants.Model.FhirR3).PreHandleAsyncWith<VonkPluginService>((svc, context) => svc.PrepareTest(context));
+            builder.OnCustomInteraction(VonkInteraction.all_custom, "test").PreHandleAsyncWith<VonkPluginService>((svc, context) => svc.PrepareTest(context));
 
             // Register Post-Handler, needs to be registered before the custom operation itself
-            builder.OnCustomInteraction(VonkInteraction.all_custom, "test").AndInformationModel(VonkConstants.Model.FhirR3).PostHandleAsyncWith<VonkPluginService>((svc, context) => svc.PostHandlerTest(context));
+            builder.OnCustomInteraction(VonkInteraction.all_custom, "test").PostHandleAsyncWith<VonkPluginService>((svc, context) => svc.PostHandlerTest(context));
 
             // Register interactions (Don't add a "$" sign to the name of the custom operation, it will be added by default)
-            builder.OnCustomInteraction(VonkInteraction.instance_custom, "test").AndInformationModel(VonkConstants.Model.FhirR3).AndMethod("GET").HandleAsyncWith<VonkPluginService>((svc, context) => svc.Test(context));
-            builder.OnCustomInteraction(VonkInteraction.type_custom, "test").AndInformationModel(VonkConstants.Model.FhirR3).AndMethod("POST").HandleAsyncWith<VonkPluginService>((svc, context) => svc.Test(context));
+            builder.OnCustomInteraction(VonkInteraction.instance_custom, "test").AndMethod("GET").HandleAsyncWith<VonkPluginService>((svc, context) => svc.Test(context));
+            builder.OnCustomInteraction(VonkInteraction.type_custom, "test").AndMethod("POST").HandleAsyncWith<VonkPluginService>((svc, context) => svc.Test(context));
             return builder;
         }
     }
@@ -51,6 +50,21 @@ namespace Vonk.Plugin.ExampleOperation
         public static IApplicationBuilder Configure(IApplicationBuilder builder)
         {
             builder.UseMiddleware<VonkPluginMiddleware>();
+            return builder;
+        }
+    }
+
+    [VonkConfiguration(order: 1115)] // Needs to be configured before the VonkToHttpConfiguration
+    public class CustomContentTypeMiddlewareConfiguration
+    {
+        public static IServiceCollection ConfigureServices(IServiceCollection services)
+        {
+            return services;
+        }
+
+        public static IApplicationBuilder Configure(IApplicationBuilder builder)
+        {
+            builder.UseMiddleware<CustomContentTypeMiddleware>();
             return builder;
         }
     }
