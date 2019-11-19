@@ -1,0 +1,13 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- Solution-wide properties for NuGet packaging -->
+  <PropertyGroup>
+    <VersionPrefix>0.1.0</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
+    <Authors>Firely</Authors>
+    <Company>Firely (https://fire.ly)</Company>
+    <Copyright>Copyright 2013-2019 Firely</Copyright>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+  
+</Project>
