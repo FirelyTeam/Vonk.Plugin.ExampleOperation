@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.28531.58
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vonk.Plugin.ExampleOperation", "Vonk.Plugin.ExampleOperation\Vonk.Plugin.ExampleOperation.csproj", "{3D199D9D-E55B-46D1-A0D5-106BF10C9FEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vonk.Plugin.ExampleOperation.Tests", "Vonk.Plugin.ExampleOperation.Tests\Vonk.Plugin.ExampleOperation.Tests.csproj", "{074F2201-1B5A-4E1F-9091-8C0DE01A59B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vonk.Plugin.ExampleOperation.Tests", "Vonk.Plugin.ExampleOperation.Tests\Vonk.Plugin.ExampleOperation.Tests.csproj", "{074F2201-1B5A-4E1F-9091-8C0DE01A59B3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{432B5672-28A7-4316-9569-4BC6594502B5}"
+	ProjectSection(SolutionItems) = preProject
+		Vonk.Plugin.ExampleOperation.props = Vonk.Plugin.ExampleOperation.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
