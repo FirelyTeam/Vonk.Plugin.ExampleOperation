@@ -1,22 +1,21 @@
-﻿using Hl7.Fhir.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Vonk.Core.Common;
 using Vonk.Core.Context;
-using Vonk.Core.Context.Features;
 
-namespace Vonk.Test.Utils
+namespace Vonk.UnitTests.Framework.Helpers
 {
     public class VonkTestContext : VonkBaseContext
     {
-        public VonkTestContext() : base()
+        public VonkTestContext(string informationModel = VonkConstants.Model.FhirR3) : base()
         {
             TestRequest = new VonkTestRequest();
             TestArguments = new ArgumentCollection();
             TestResponse = new VonkTestResponse();
+            InformationModel = informationModel;
         }
 
-        public VonkTestContext(VonkInteraction interaction) : this()
+        public VonkTestContext(VonkInteraction interaction, string informationModel = VonkConstants.Model.FhirR3) : this(informationModel)
         {
             TestRequest.Interaction = interaction;
         }
@@ -54,7 +53,7 @@ namespace Vonk.Test.Utils
         public Dictionary<VonkResultHeader, string> Headers { get; set; } = new Dictionary<VonkResultHeader, string>();
 
         public int HttpResult { get; set; }
-        public OperationOutcome Outcome { get; set; } = new OperationOutcome();
+        public VonkOutcome Outcome { get; set; } = new VonkOutcome();
         public IResource Payload { get; set; }
     }
 }

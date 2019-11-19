@@ -1,11 +1,9 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
 using Vonk.Core.Context;
-using Vonk.Core.Context.Features;
 using Vonk.Core.Support;
-using Hl7.Fhir.Model;
-using Vonk.Fhir.R3;
 using Task = System.Threading.Tasks.Task;
+using static Vonk.Core.Context.VonkOutcome;
 
 namespace Vonk.Plugin.ExampleOperation
 {
@@ -33,14 +31,7 @@ namespace Vonk.Plugin.ExampleOperation
 
             _ = await Task.FromResult(true); // Replace with own complex operation
 
-            var operationOutcome = new OperationOutcome();
-            operationOutcome.Issue.Add(new OperationOutcome.IssueComponent
-            {
-                Severity = OperationOutcome.IssueSeverity.Information,
-                Code = OperationOutcome.IssueType.Informational,
-                Diagnostics = "$test operation was executed successfully"
-            });
-            response.Payload = operationOutcome.ToIResource();
+            vonkContext.Response.Outcome.AddIssue(IssueSeverity.Information, IssueType.Informational, diagnostics: "$test operation was executed successfully");
 
             _logger.LogDebug("VonkPluginService - Executed $test"); // Adjust log level in logsettings.instance.json to see the message
         }

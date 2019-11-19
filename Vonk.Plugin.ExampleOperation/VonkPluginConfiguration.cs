@@ -1,10 +1,10 @@
-﻿using System;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Vonk.Core.Context;
+using Vonk.Core.Metadata;
 using Vonk.Core.Pluggability;
-using Vonk.Core.Support;
+using Vonk.Core.Pluggability.ContextAware;
 
 namespace Vonk.Plugin.ExampleOperation
 {
@@ -18,7 +18,7 @@ namespace Vonk.Plugin.ExampleOperation
         public static IServiceCollection ConfigureServices(IServiceCollection services)
         {
             services.TryAddScoped<VonkPluginService>(); // Add the service implementation
-            services.AddIfNotExists<IConformanceContributor, VonkPluginConformanceContributor>(ServiceLifetime.Transient); // Add operation to Vonk's CapabilityStatement
+            services.TryAddContextAware<ICapabilityStatementContributor, VonkPluginCapabilityStatementContributor>(ServiceLifetime.Transient); // Add operation to Vonk's CapabilityStatement
             return services;
         }
 
@@ -50,6 +50,21 @@ namespace Vonk.Plugin.ExampleOperation
         public static IApplicationBuilder Configure(IApplicationBuilder builder)
         {
             builder.UseMiddleware<VonkPluginMiddleware>();
+            return builder;
+        }
+    }
+
+    [VonkConfiguration(order: 1115)] // Needs to be configured before the VonkToHttpConfiguration
+    public class CustomContentTypeMiddlewareConfiguration
+    {
+        public static IServiceCollection ConfigureServices(IServiceCollection services)
+        {
+            return services;
+        }
+
+        public static IApplicationBuilder Configure(IApplicationBuilder builder)
+        {
+            builder.UseMiddleware<CustomContentTypeMiddleware>();
             return builder;
         }
     }
