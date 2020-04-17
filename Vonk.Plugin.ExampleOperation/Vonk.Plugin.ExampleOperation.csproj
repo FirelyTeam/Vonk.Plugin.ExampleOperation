@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Vonk.Core" Version="3.4.0" />
+    <PackageReference Include="Vonk.Core" Version="3.5.0" />
   </ItemGroup>
 
 </Project>
