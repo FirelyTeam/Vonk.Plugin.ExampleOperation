@@ -1,0 +1,320 @@
+{
+	"info": {
+		"_postman_id": "97cdab34-17c1-4d03-a683-c3f59fe94773",
+		"name": "ExampleOperation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Metainfo - Check Vonk Version",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "72d2d269-994e-4ae8-9268-a5524fb70020",
+						"exec": [
+							"pm.test(\"ExampleOperation Plugin test\", function () {",
+							"    pm.environment.set(\"KeepRunningTests\", \"true\");",
+							"    pm.response.to.have.status(200);",
+							"    const responseJson = pm.response.json();",
+							"    console.log(`${responseJson.software.name}: version: ${responseJson.software.version}`);",
+							"    const searchForConvert = { name: 'test' };",
+							"    console.log(`Check for $test operation: ${responseJson.rest[0].operation.some(searchForConvert)}`)",
+							"    if (!(responseJson.rest[0].operation.some(searchForConvert)) ) {",
+							"        console.log(\"$test operation not found, exiting test collection!\")",
+							"        pm.environment.set(\"KeepRunningTests\", \"false\");",
+							"        pm.status.return(1);",
+							"    }",
+							"    console.log(`Convert Operation tests: KeepRunningTests: ${pm.environment.get(\"KeepRunningTests\")}`);",
+							"",
+							"    if (responseJson.software.version != pm.environment.get(\"vonk_version\"))",
+							"    {",
+							"        console.log(`${responseJson.software.name}: version: ${responseJson.software.version}, expected: ${pm.environment.get(\"vonk_version\")}`);",
+							"    }",
+							"    pm.expect(responseJson.publisher).to.eql(\"Firely\");",
+							"    pm.expect(responseJson.software.name).to.eql('Vonk');",
+							"    pm.expect(responseJson.software.version).to.eql(pm.environment.get(\"vonk_version\"));",
+							"    // pm.expect(responseJson.fhirVersion).to.eql(pm.environment.get(\"fhir_version\"));",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/fhir+json"
+					},
+					{
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/fhir+json"
+					}
+				],
+				"url": {
+					"raw": "{{vonk_url}}/metadata",
+					"host": [
+						"{{vonk_url}}"
+					],
+					"path": [
+						"metadata"
+					],
+					"query": [
+						{
+							"key": "_content",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "_lastUpdated",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "_query",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "_security",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "_tag",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "_text",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "balance",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "identifier",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "owner",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "patient",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "period",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "subject",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "type",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "_count",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "_summary",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "_include",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "_reverseInclude",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "_filter",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST $test - Type level",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e1eacf31-26c1-4365-ac1f-0c09ddc8c2d2",
+						"exec": [
+							"pm.test(\"Vonk $test operation (type level) test\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"    var responseJson = pm.response.json();",
+							"    // console.log(responseJson);",
+							"    if (pm.response.code == 200) {",
+							"        console.log(`$test operation (type level), diagnostics: [${responseJson.issue[0].diagnostics}], Id: ${responseJson.id}`);",
+							"    }",
+							"    pm.expect(responseJson.issue[0].diagnostics).to.string('');",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{vonk_url}}/Patient/$test",
+					"host": [
+						"{{vonk_url}}"
+					],
+					"path": [
+						"Patient",
+						"$test"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Example Patient resource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "764f1b5d-8967-437f-962e-8d572682c085",
+						"exec": [
+							"pm.test(\"Vonk PUT Patient (for $test) test\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([201]);",
+							"    const responseJson = pm.response.json();",
+							"    if (pm.response.code == 201) {",
+							"        console.log(`Patient created, [${responseJson.name[0].given[0]} ${responseJson.name[0].family}], patientId: ${responseJson.id}`);",
+							"    }",
+							"    // save the returned Patient.id",
+							"    pm.environment.set(\"patientId\", responseJson.id);",
+							"    pm.expect(responseJson.active).to.eql(true);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/fhir+json;",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/fhir+json;",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"resourceType\": \"Patient\",\n  \"id\": \"example\",\n  \"text\": {\n    \"status\": \"generated\",\n    \"div\": \"<div xmlns=\\\"http://www.w3.org/1999/xhtml\\\">\\n\\t\\t\\t<table>\\n\\t\\t\\t\\t<tbody>\\n\\t\\t\\t\\t\\t<tr>\\n\\t\\t\\t\\t\\t\\t<td>Name</td>\\n\\t\\t\\t\\t\\t\\t<td>Peter James \\n              <b>Chalmers</b> (&quot;Jim&quot;)\\n            </td>\\n\\t\\t\\t\\t\\t</tr>\\n\\t\\t\\t\\t\\t<tr>\\n\\t\\t\\t\\t\\t\\t<td>Address</td>\\n\\t\\t\\t\\t\\t\\t<td>534 Erewhon, Pleasantville, Vic, 3999</td>\\n\\t\\t\\t\\t\\t</tr>\\n\\t\\t\\t\\t\\t<tr>\\n\\t\\t\\t\\t\\t\\t<td>Contacts</td>\\n\\t\\t\\t\\t\\t\\t<td>Home: unknown. Work: (03) 5555 6473</td>\\n\\t\\t\\t\\t\\t</tr>\\n\\t\\t\\t\\t\\t<tr>\\n\\t\\t\\t\\t\\t\\t<td>Id</td>\\n\\t\\t\\t\\t\\t\\t<td>MRN: 12345 (Acme Healthcare)</td>\\n\\t\\t\\t\\t\\t</tr>\\n\\t\\t\\t\\t</tbody>\\n\\t\\t\\t</table>\\n\\t\\t</div>\"\n  },\n  \"identifier\": [\n    {\n      \"use\": \"usual\",\n      \"type\": {\n        \"coding\": [\n          {\n            \"system\": \"http://terminology.hl7.org/CodeSystem/v2-0203\",\n            \"code\": \"MR\"\n          }\n        ]\n      },\n      \"system\": \"urn:oid:1.2.36.146.595.217.0.1\",\n      \"value\": \"12345\",\n      \"period\": {\n        \"start\": \"2001-05-06\"\n      },\n      \"assigner\": {\n        \"display\": \"Acme Healthcare\"\n      }\n    }\n  ],\n  \"active\": true,\n  \"name\": [\n    {\n      \"use\": \"official\",\n      \"family\": \"Chalmers\",\n      \"given\": [\n        \"Peter\",\n        \"James\"\n      ]\n    },\n    {\n      \"use\": \"usual\",\n      \"given\": [\n        \"Jim\"\n      ]\n    },\n    {\n      \"use\": \"maiden\",\n      \"family\": \"Windsor\",\n      \"given\": [\n        \"Peter\",\n        \"James\"\n      ],\n      \"period\": {\n        \"end\": \"2002\"\n      }\n    }\n  ],\n  \"telecom\": [\n    {\n      \"use\": \"home\"\n    },\n    {\n      \"system\": \"phone\",\n      \"value\": \"(03) 5555 6473\",\n      \"use\": \"work\",\n      \"rank\": 1\n    },\n    {\n      \"system\": \"phone\",\n      \"value\": \"(03) 3410 5613\",\n      \"use\": \"mobile\",\n      \"rank\": 2\n    },\n    {\n      \"system\": \"phone\",\n      \"value\": \"(03) 5555 8834\",\n      \"use\": \"old\",\n      \"period\": {\n        \"end\": \"2014\"\n      }\n    }\n  ],\n  \"gender\": \"male\",\n  \"birthDate\": \"1974-12-25\",\n  \"_birthDate\": {\n    \"extension\": [\n      {\n        \"url\": \"http://hl7.org/fhir/StructureDefinition/patient-birthTime\",\n        \"valueDateTime\": \"1974-12-25T14:35:45-05:00\"\n      }\n    ]\n  },\n  \"deceasedBoolean\": false,\n  \"address\": [\n    {\n      \"use\": \"home\",\n      \"type\": \"both\",\n      \"text\": \"534 Erewhon St PeasantVille, Rainbow, Vic  3999\",\n      \"line\": [\n        \"534 Erewhon St\"\n      ],\n      \"city\": \"PleasantVille\",\n      \"district\": \"Rainbow\",\n      \"state\": \"Vic\",\n      \"postalCode\": \"3999\",\n      \"period\": {\n        \"start\": \"1974-12-25\"\n      }\n    }\n  ],\n  \"contact\": [\n    {\n      \"relationship\": [\n        {\n          \"coding\": [\n            {\n              \"system\": \"http://terminology.hl7.org/CodeSystem/v2-0131\",\n              \"code\": \"N\"\n            }\n          ]\n        }\n      ],\n      \"name\": {\n        \"family\": \"du Marché\",\n        \"_family\": {\n          \"extension\": [\n            {\n              \"url\": \"http://hl7.org/fhir/StructureDefinition/humanname-own-prefix\",\n              \"valueString\": \"VV\"\n            }\n          ]\n        },\n        \"given\": [\n          \"Bénédicte\"\n        ]\n      },\n      \"telecom\": [\n        {\n          \"system\": \"phone\",\n          \"value\": \"+33 (237) 998327\"\n        }\n      ],\n      \"address\": {\n        \"use\": \"home\",\n        \"type\": \"both\",\n        \"line\": [\n          \"534 Erewhon St\"\n        ],\n        \"city\": \"PleasantVille\",\n        \"district\": \"Rainbow\",\n        \"state\": \"Vic\",\n        \"postalCode\": \"3999\",\n        \"period\": {\n          \"start\": \"1974-12-25\"\n        }\n      },\n      \"gender\": \"female\",\n      \"period\": {\n        \"start\": \"2012\"\n      }\n    }\n  ],\n  \"managingOrganization\": {\n    \"reference\": \"Organization/1\"\n  }\n}"
+				},
+				"url": {
+					"raw": "{{vonk_url}}/Patient/example",
+					"host": [
+						"{{vonk_url}}"
+					],
+					"path": [
+						"Patient",
+						"example"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET $test - Instance level",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6d1e74f8-ee1a-4146-80a1-87b9a96233a3",
+						"exec": [
+							"pm.test(\"Vonk $test operation (instance level) test\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200]);",
+							"    var responseJson = pm.response.json();",
+							"    // console.log(responseJson);",
+							"    if (pm.response.code == 200) {",
+							"        console.log(`$test operation (instance level), diagnostics: [${responseJson.issue[0].diagnostics}], Id: ${responseJson.id}`);",
+							"    }",
+							"    pm.expect(responseJson.issue[0].diagnostics).to.string('');",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/fhir+json;",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{vonk_url}}/Patient/example/$test",
+					"host": [
+						"{{vonk_url}}"
+					],
+					"path": [
+						"Patient",
+						"example",
+						"$test"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
