@@ -9,5 +9,9 @@
     <Copyright>Copyright 2013-2019 Firely</Copyright>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <VonkVersion>3.9.0</VonkVersion>
+  </PropertyGroup>
   
 </Project>
