@@ -15,10 +15,10 @@ For instructions on how to run the plug-in and the Firely Server, please see the
 
 ### Build dependencies
 The following configuration has been succesfully tested for building and running the project:
-* Firely Server (Vonk) - Version 3.1.0
+* Firely Server (Vonk) - Version 4.0.0
 * Visual Studio for Mac - Version 8.x.x
 * Visual Studio for Windows - Version 16.x.x
-* .Net Core - Version 2.2
+* .Net Core - Version 3.1
 
 ## Tests
 
