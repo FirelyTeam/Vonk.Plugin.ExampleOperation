@@ -14,6 +14,7 @@
     <PackageReference Include="Moq" Version="4.16.0" />
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="Vonk.Core" Version="$(VonkVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.0" />
   </ItemGroup>
   
   <ItemGroup>
