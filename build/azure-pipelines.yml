@@ -19,4 +19,4 @@ jobs:
     nuGetServiceConnections: VonkPackageCredentials
     nuGetSources: --source https://www.myget.org/F/vonk/api/v3/index.json 
     pool:
-         name: 'Private pool'
+         vmImage: windows-latest
