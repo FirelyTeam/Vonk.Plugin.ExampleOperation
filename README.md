@@ -8,10 +8,10 @@ A template for creating plugins for the Firely server [(server.fire.ly)](server.
 ## Getting Started
 This project was designed to help you get started with developing a plug-in for Firely Server.<br>
 It's a skeleton which you can adopt to create more complex custom operations.<br>
-For more details about developing a Firely Server plug-in, please see [Vonk documentation - Vonk FHIR Components](http://docs.simplifier.net/vonk/components/components.html).
+For more details about developing a Firely Server plug-in, please see [Firely Server documentation - Firely Server Plugins](https://docs.fire.ly/projects/Firely-Server/en/latest/plugins/plugins.html#firely-server-plugins).
 
 ### Install
-For instructions on how to run the plug-in and the Firely Server, please see the offical [Firely Server documentation](http://docs.simplifier.net/vonk/index.html).
+For instructions on how to run the plug-in and the Firely Server, please see the offical [Firely Server documentation](https://docs.fire.ly/projects/Firely-Server/en/latest/index.html).
 
 ### Build dependencies
 The following configuration has been succesfully tested for building and running the project:
