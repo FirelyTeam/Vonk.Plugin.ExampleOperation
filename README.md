@@ -16,7 +16,8 @@ For instructions on how to run the plug-in and the Firely Server, please consult
 ```
     "SupportedInteractions": {
       "InstanceLevelInteractions": "read, vread, ... , $everything, $test",
-      "TypeLevelInteractions": "create, search, ... , $export, $test"
+      "TypeLevelInteractions": "create, search, ... , $export, $test",
+      "WholeSystemInteractions": "capabilities, batch, ... , $closure, $test"
     },
 ```
 
