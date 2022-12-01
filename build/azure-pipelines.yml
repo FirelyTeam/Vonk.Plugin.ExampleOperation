@@ -15,8 +15,9 @@ variables:
 jobs:
 - template: build.yml@templates  # Template reference
   parameters:
-    restoreDependencies: true
+    dotNetCoreVersion: '6.0.x'
     nuGetServiceConnections: VonkPackageCredentials
     nuGetSources: --source https://www.myget.org/F/vonk/api/v3/index.json 
     pool:
          vmImage: windows-latest
+    restoreDependencies: true
