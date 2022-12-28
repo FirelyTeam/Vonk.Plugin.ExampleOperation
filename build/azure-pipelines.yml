@@ -21,4 +21,3 @@ jobs:
     dotNetCoreVersion: '6.0.x'
     pool:
          vmImage: windows-latest
-    restoreDependencies: true
