@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using Vonk.Core.Common;
+using Vonk.Core.Context;
 using Vonk.Core.Context.Guards;
 using Vonk.Core.Metadata;
 using Vonk.Core.Model.Capability;
@@ -26,7 +27,7 @@ namespace Vonk.Plugin.ExampleOperation
         public void ContributeToCapabilityStatement(ICapabilityStatementBuilder builder)
         {
             Check.NotNull(builder, nameof(builder));
-            if (_supportedInteractionOptions.SupportsCustomOperation(_operationName))
+            if (_supportedInteractionOptions.SupportsOperation(VonkInteraction.all_custom, _operationName))
             {
                 builder.UseRestComponentEditor(rce =>
                 {
