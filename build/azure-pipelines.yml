@@ -16,6 +16,7 @@ jobs:
 - template: build.yml@templates  # Template reference
   parameters:
     restoreDependencies: true
+    propsFile: 'Vonk.Plugin.ExampleOperation.props'
     nuGetServiceConnections: VonkPackageCredentials, GitHub_FirelyTeams_NuGetFeed
     nuGetSources: --source https://www.myget.org/F/vonk/api/v3/index.json --source https://nuget.pkg.github.com/FirelyTeam/index.json
     dotNetCoreVersion: '6.0.x'
