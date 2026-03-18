@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <VonkVersion>5.*-*</VonkVersion>
+    <VonkVersion>6.*-*</VonkVersion>
   </PropertyGroup>
   
 </Project>
