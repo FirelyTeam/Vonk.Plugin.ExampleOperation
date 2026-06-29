@@ -20,6 +20,6 @@ jobs:
     propsFile: 'Vonk.Plugin.ExampleOperation.props'
     nuGetServiceConnections: GitHub_FirelyTeams_NuGetFeed
     nuGetSources: --source https://nuget.pkg.github.com/FirelyTeam/index.json
-    dotNetCoreVersion: '8.0.x'
+    dotNetCoreVersion: '10.0.x'
     pool:
          vmImage: windows-latest
