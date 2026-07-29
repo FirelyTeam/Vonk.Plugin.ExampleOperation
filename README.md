@@ -11,13 +11,21 @@ It's a skeleton which you can adopt to create more complex custom operations.<br
 For more details about developing a Firely Server plug-in, please consult [Firely Server documentation - Firely Server Plugins](https://docs.fire.ly/projects/Firely-Server/en/latest/plugins/plugins.html#firely-server-plugins).
 
 ### Install
-For instructions on how to run the plug-in and the Firely Server, please consult the offical [Firely Server documentation](https://docs.fire.ly/projects/Firely-Server/en/latest/index.html). After the plugin was installed, make sure to include '$test' within the supported interactions of your appsettings. Find the 'SupportedInteractions' section in your appsettings.json and add the '$test' operation like shown below:
+For instructions on how to run the plug-in and the Firely Server, please consult the offical [Firely Server documentation](https://docs.fire.ly/projects/Firely-Server/en/latest/index.html). After the plugin was installed, make sure to include '$test' within the supported interactions of your appsettings. Find the 'Operations' section in your appsettings.json and add the '$test' operation like shown below:
 
 ```
-    "SupportedInteractions": {
-      "InstanceLevelInteractions": "read, vread, ... , $everything, $test",
-      "TypeLevelInteractions": "create, search, ... , $export, $test",
-      "WholeSystemInteractions": "capabilities, batch, ... , $closure, $test"
+    "Operations": {
+      "$test": {
+        "Name": "$test",
+        "Level": [
+          "System",
+          "Type",
+          "Instance"
+        ],
+        "Enabled": true,
+        "RequireAuthorization": "WhenAuthEnabled",
+        "RequireTenant": "WhenTenancyEnabled"
+      },
     },
 ```
 
@@ -25,10 +33,10 @@ For instructions on how to run the plug-in and the Firely Server, please consult
 
 ### Build dependencies
 The following configuration has been succesfully tested for building and running the project:
-* Firely Server (Vonk) - Version 4.0.0
+* Firely Server (Vonk) - Version 6.6.0+
 * Visual Studio for Mac - Version 8.x.x
 * Visual Studio for Windows - Version 16.x.x
-* .Net Core - Version 3.1
+* .NET 8
 
 ## Tests
 
